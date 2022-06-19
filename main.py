@@ -49,8 +49,7 @@ def getStockTickerAndPrice(se):
     SimpleEquity, float
     '''
     stock = getStockFromTicker(se)
-    price = input("Provide stock price: ")
-    price = float(price)
+    price = float(input("Provide stock price: "))
     if price<=0:
         raise ValueError("Stock price should be more than zero!")
     return stock, price
@@ -80,15 +79,15 @@ def runAssignment():
                 print("P/E Ratio for %s:%s"%(stock.ticker, stock.getPriceToEarningsRatio(price)))
 
             elif option == "3":
-                isBuy = input("buy(y) or sell(n)?: ")
-                if isBuy == "y":
+                isBuy = input("buy(b) or sell(s)?: ")
+                if isBuy == "b":
                     stock, price = getStockTickerAndPrice(se)
-                    quantity = input("How many stock you want to buy: ")
+                    quantity = int(input("How many stock you want to buy: "))
                     se.buyStock(stock.ticker, quantity, price)
                     print("Bought %s stocks of %s at %s strike price"%(quantity, stock.ticker, price))
-                elif isBuy == "n":
+                elif isBuy == "s":
                     stock, price = getStockTickerAndPrice(se)
-                    quantity = input("How many stock you want to sell: ")
+                    quantity = int(input("How many stock you want to sell: "))
                     se.sellStock(stock.ticker, quantity, price)
                     print("Sold %s stocks of %s at %s strike price"%(quantity, stock.ticker, price))
                 else:
